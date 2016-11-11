@@ -111,12 +111,15 @@ Commands.request = {
   aliases: ['queue'],
   noDM: true,
   usage: 'link',
-  timeout: 10,
   level: 1,
   fn: function (msg, suffix, bot) {
     var u = require('url').parse(suffix)
     if (u.host === null) {
-      v.request(msg, 'ytsearch:' + suffix, bot)
+      suffix.split(' ').forEach(function (youtubeId) {
+        if (youtubeId) {
+          v.request(msg, 'ytsearch:' + youtubeId, bot)
+        }
+      })
     } else {
       v.request(msg, suffix, bot)
     }

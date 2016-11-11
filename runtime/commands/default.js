@@ -45,8 +45,7 @@ Commands.purge = {
   usage: '<number>',
   aliases: ['prune'],
   noDM: true,
-  timeout: 30,
-  level: 0,
+  level: 3,
   fn: function (msg, suffix, bot) {
     var guild = msg.guild
     var user = msg.author
@@ -535,7 +534,7 @@ Commands.kick = {
   help: 'Kick the user(s) out of the server!',
   noDM: true,
   usage: '<user-mention>',
-  level: 0,
+  level: 3,
   fn: function (msg, suffix, bot) {
     var guild = msg.guild
     var user = msg.author
@@ -568,7 +567,7 @@ Commands.ban = {
   help: 'Swing the banhammer on someone!',
   noDM: true,
   usage: '<user-mention> [days]',
-  level: 0,
+  level: 3,
   fn: function (msg, suffix, bot) {
     var guild = msg.guild
     var user = msg.author

@@ -8,6 +8,7 @@ var YT = require('youtube-dl')
 var fs = require('fs')
 var Logger = require('./logger.js').Logger
 var Config = require('../../config.json')
+var DEFAULT_VOLUME = 25
 
 exports.registerVanity = function (msg) {
   list[msg.guild.id] = {
@@ -194,7 +195,7 @@ function next (msg, suffix, bot) {
           source: list[msg.guild.id].link[0]
         })
         encoder.play()
-        var vol = (list[msg.guild.id].volume !== undefined) ? list[msg.guild.id].volume : 100
+        var vol = (list[msg.guild.id].volume !== undefined) ? list[msg.guild.id].volume : DEFAULT_VOLUME
         connection.voiceConnection.getEncoder().setVolume(vol)
         encoder.once('end', () => {
           msg.channel.sendMessage('**' + list[msg.guild.id].info[0] + '** has ended!').then((m) => {
@@ -474,7 +475,7 @@ function fetch (v, msg, stats) {
             link: [i.url],
             vanity: false,
             info: [i.title],
-            volume: 100,
+            volume: DEFAULT_VOLUME,
             requester: [msg.author.username],
             skips: {
               count: 0,
@@ -558,7 +559,7 @@ function DLFetch (video, msg) {
             vanity: false,
             link: [],
             info: [],
-            volume: 100,
+            volume: DEFAULT_VOLUME,
             requester: [],
             skips: {
               count: 0,

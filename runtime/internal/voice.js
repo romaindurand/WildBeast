@@ -280,7 +280,7 @@ exports.voteSkip = function (msg, bot) {
   } else if (msg.member.getVoiceChannel().id !== connect[0].voiceConnection.channel.id) {
     msg.reply("You're not allowed to vote because you're not in the voice channel.")
   } else {
-    var count = Math.round((connect[0].voiceConnection.channel.members.length - 2) / 2)
+    var count = Math.round((connect[0].voiceConnection.channel.members.length - 1) / 2)
     if (list[msg.guild.id].skips.users.indexOf(msg.author.id) > -1) {
       msg.reply('You already voted to skip this song!')
     } else {

@@ -18,7 +18,7 @@ Commands.volume = {
   help: "I'll change my volume!",
   aliases: ['vol'],
   noDM: true,
-  level: 1,
+  level: 2,
   fn: function (msg, suffix, bot) {
     v.volume(msg, suffix, bot)
   }

@@ -113,16 +113,16 @@ Commands.request = {
   usage: 'link',
   level: 1,
   fn: function (msg, suffix, bot) {
-    var u = require('url').parse(suffix)
-    if (u.host === null) {
-      suffix.split(' ').forEach(function (youtubeId) {
-        if (youtubeId) {
-          v.request(msg, 'ytsearch:' + youtubeId, bot)
+    suffix.split(' ').forEach(function (songId) {
+      var u = require('url').parse(suffix)
+      if (u.host === null) {
+        if (songId) {
+          v.request(msg, 'ytsearch:' + songId, bot)
         }
-      })
-    } else {
-      v.request(msg, suffix, bot)
-    }
+      } else {
+        v.request(msg, songId, bot)
+      }
+    })
   }
 }
 

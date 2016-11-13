@@ -113,7 +113,7 @@ Commands.request = {
   usage: 'link',
   level: 1,
   fn: function (msg, suffix, bot) {
-    suffix.split(' ').forEach(function (songId) {
+    suffix.split(';').forEach(function (songId) {
       var u = require('url').parse(suffix)
       if (u.host === null) {
         if (songId) {

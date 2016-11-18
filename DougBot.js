@@ -58,6 +58,12 @@ bot.Dispatcher.on(Event.GATEWAY_READY, function () {
 bot.Dispatcher.on(Event.MESSAGE_CREATE, function (c) {
   if (!bot.connected) return
   datacontrol.users.isKnown(c.message.author)
+  var autoResponse = Config.settings.autoResponse || []
+  autoResponse.forEach(function (item) {
+    if (c.message.content.indexOf(item.pattern) !== -1) {
+      c.message.channel.sendMessage(item.response)
+    }
+  })
   var prefix
   datacontrol.customize.prefix(c.message).then(function (p) {
     if (!p) {

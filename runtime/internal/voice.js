@@ -429,8 +429,9 @@ exports.request = function (msg, suffix, bot) {
         next(msg, suffix, bot)
       }
     }).catch((e) => {
-      Logger.error(e)
-      msg.channel.sendMessage("I couldn't add that to the playlist.").then((m) => {
+      Logger.error(e.message || e)
+      var message = e.message || "I couldn't add that to the playlist."
+      msg.channel.sendMessage(message).then((m) => {
         if (Config.settings.autodeletemsg) {
           setTimeout(() => {
             m.delete().catch((e) => Logger.error(e))
@@ -470,6 +471,19 @@ function fetch (v, msg, stats) {
     YT.getInfo(v, options, function (err, i) {
       if (!err && i) {
         y++
+        if (list[msg.guild.id].info && list[msg.guild.id].info.find(info => info === i.title)) {
+          if (y > x) {
+            return reject({
+              error: 'err',
+              message: 'Song already in playlist.',
+              done: true
+            })
+          } else {
+            return reject({
+              error: 'err'
+            })
+          }
+        }
         if (list[msg.guild.id].link === undefined || list[msg.guild.id].link.length < 1) {
           list[msg.guild.id] = {
             link: [i.url],

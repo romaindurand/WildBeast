@@ -108,7 +108,7 @@ Commands.voice = {
 Commands.request = {
   name: 'request',
   help: 'Use this to request songs!',
-  aliases: ['queue'],
+  aliases: ['queue', 'q'],
   noDM: true,
   usage: 'link',
   level: 1,

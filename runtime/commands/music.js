@@ -18,7 +18,7 @@ Commands.volume = {
   help: "I'll change my volume!",
   aliases: ['vol'],
   noDM: true,
-  level: 2,
+  level: 4,
   fn: function (msg, suffix, bot) {
     v.volume(msg, suffix, bot)
   }
@@ -38,7 +38,7 @@ Commands.shuffle = {
   name: 'shuffle',
   help: 'Shuffle the current playlist.',
   noDM: true,
-  level: 2,
+  level: 1,
   fn: function (msg, suffix, bot) {
     v.shuffle(msg, bot)
   }

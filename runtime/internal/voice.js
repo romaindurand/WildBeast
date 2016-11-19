@@ -471,7 +471,8 @@ function fetch (v, msg, stats) {
     YT.getInfo(v, options, function (err, i) {
       if (!err && i) {
         y++
-        if (list[msg.guild.id].info && list[msg.guild.id].info.find(info => info === i.title)) {
+        var requestSpamFilter = Config.settings.requestSpamFilter || 0
+        if (requestSpamFilter && list[msg.guild.id].info && list[msg.guild.id].info.filter(info => info === i.title).length >= requestSpamFilter) {
           if (y > x) {
             return reject({
               error: 'err',

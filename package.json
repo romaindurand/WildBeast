@@ -24,7 +24,8 @@
     "test": "standard & eslint **",
     "start": "node DougBot.js",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": {
     "name": "Remco Jongschaap",
@@ -63,7 +64,7 @@
     "youtube-api": "^2.0.2",
     "youtube-dl": "^1.11.1",
     "ytdl-core": "^0.7.15",
-    "snyk": "^1.41.1"
+    "snyk": "^1.83.0"
   },
   "devDependencies": {
     "eslint": "^3.0.0",
